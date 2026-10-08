@@ -1,0 +1,70 @@
+<a class="skip-link" href="#main" (click)="skipToContent($event)">Skip to content</a>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" routerLink="/overview" aria-label="Angular Lab home">
+      <span class="brand-mark">A<span>↗</span></span>
+      <span>angular<span class="brand-light"> / lab</span><small>KEY FEATURES · 2026</small></span>
+    </a>
+    <div class="sidebar-section">WORKSPACE</div>
+    <nav aria-label="Main navigation">
+      @for (item of navigation; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <app-icon [name]="item.icon" /><span>{{ item.name }}</span
+          ><small>{{ item.number }}</small>
+        </a>
+      }
+    </nav>
+    <div class="sidebar-note">
+      <span class="status-dot"></span> Built to be explored
+      <p>Small, working examples.<br />Thoughtful Angular architecture.</p>
+      <a
+        href="https://github.com/viktorgit/Key-features-Angular-2026"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Explore the source <span>↗</span></a
+      >
+    </div>
+    <div class="author">
+      <span class="avatar">VK</span>
+      <div>Viktor Kabanov<small>Frontend developer</small></div>
+      <a
+        href="https://github.com/viktorgit"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Viktor on GitHub"
+        ><app-icon name="arrow"
+      /></a>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <span class="breadcrumb">Portfolio <span>/</span> Angular Lab</span>
+      <div class="topbar-actions">
+        <span class="version"><span class="status-dot"></span> Angular {{ version }}</span>
+        <button
+          class="icon-button"
+          (click)="theme.toggle()"
+          [attr.aria-label]="theme.dark() ? 'Switch to light theme' : 'Switch to dark theme'"
+          [attr.aria-pressed]="theme.dark()"
+        >
+          <app-icon [name]="theme.dark() ? 'sun' : 'moon'" />
+        </button>
+        <a
+          class="source-button"
+          href="https://github.com/viktorgit/Key-features-Angular-2026"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><app-icon name="code" /> Source code <span>↗</span></a
+        >
+      </div>
+    </header>
+    <main id="main" #mainContent tabindex="-1"><router-outlet /></main>
+    <footer>
+      <span>Designed around real Angular patterns.</span
+      ><span
+        >Angular 22 <span class="footer-dot">·</span> TypeScript 6
+        <span class="footer-dot">·</span> RxJS 7</span
+      >
+    </footer>
+  </div>
+</div>

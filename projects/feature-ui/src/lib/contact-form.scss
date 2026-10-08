@@ -1,0 +1,75 @@
+:host {
+  display: block;
+  font-family: inherit;
+  color: var(--ink, #21232c);
+}
+* {
+  box-sizing: border-box;
+}
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+label {
+  font-size: 12px;
+  font-weight: 600;
+}
+input,
+textarea {
+  font: inherit;
+  font-size: 12px;
+  border: 1px solid var(--line, #e5e7ee);
+  background: var(--surface, #fff);
+  color: inherit;
+  border-radius: 7px;
+  padding: 12px 13px;
+  width: 100%;
+  min-width: 0;
+}
+textarea {
+  resize: vertical;
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted, #686d7c);
+}
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--purple, #7351d7);
+  outline-offset: 3px;
+}
+.errors {
+  color: #b54550;
+  font-size: 11px;
+  display: grid;
+  gap: 4px;
+}
+.errors:empty {
+  display: none;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+button {
+  font: 600 12px inherit;
+  border: 1px solid var(--line, #e5e7ee);
+  border-radius: 7px;
+  background: var(--surface, #fff);
+  color: inherit;
+  padding: 11px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+}
+.primary {
+  background: #7351d7;
+  border-color: #7351d7;
+  color: white;
+}
+.primary span {
+  margin-left: 15px;
+}

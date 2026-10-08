@@ -1,0 +1,109 @@
+<div class="page-heading">
+  <span class="eyebrow">04 / ARCHITECTURE</span>
+  <h1>Small pieces. Strong foundations.</h1>
+  <p>
+    Explore provider boundaries and deferred loading, then follow the path from the Angular 13
+    original to this workspace.
+  </p>
+</div>
+<div class="two-column">
+  <section class="panel">
+    <div class="panel-top">
+      <h2>A scope of their own.</h2>
+      <span class="tag">DEPENDENCY INJECTION</span>
+    </div>
+    <p>
+      Both widgets inject the same service class. Component-level providers give each one an
+      independent instance.
+    </p>
+    <div class="two-column">
+      <app-scoped-counter label="Widget A" /><app-scoped-counter label="Widget B" />
+    </div>
+    <p class="note">
+      Navigate away and back to reset these scoped instances. Saved features remain available
+      because their store is provided at the root.
+    </p>
+  </section>
+  <div class="code-panel">
+    <div class="code-label"><span>scoped-counter.ts</span><span>inject()</span></div>
+    <pre>{{ diSnippet }}</pre>
+  </div>
+</div>
+<div class="two-column section-gap">
+  <section class="panel">
+    <div class="panel-top">
+      <h2>Make room for later.</h2>
+      <span class="tag">DEFERRED VIEW</span>
+    </div>
+    <p>
+      A route is loaded when you visit it. Within that route, a deferred view waits for your
+      interaction.
+    </p>
+    <button #loadButton type="button" class="button primary">Load interactive insights ↗</button>
+    <div class="section-gap">
+      @defer (on interaction(loadButton)) {
+        <app-deferred-insights />
+      } @placeholder {
+        <div class="feedback">
+          The insights chunk is not loaded yet. Open DevTools → Network, then click the button.
+        </div>
+      } @loading (minimum 300ms) {
+        <p role="status">Loading insights…</p>
+      } @error {
+        <p class="error-text" role="alert">Could not load insights. Refresh the page to retry.</p>
+      }
+    </div>
+  </section>
+  <div class="code-panel">
+    <div class="code-label"><span>architecture-page.html</span><span>&#64;defer</span></div>
+    <pre>{{ deferSnippet }}</pre>
+  </div>
+</div>
+<section class="panel section-gap">
+  <div class="panel-top">
+    <h2>The evolution, in code.</h2>
+    <span class="tag">13 → 22</span>
+  </div>
+  <div class="two-column">
+    <div>
+      <h3>Same engineering ideas.</h3>
+      <p class="note">
+        The original
+        <a
+          href="https://github.com/viktorgit/ideal-project"
+          target="_blank"
+          rel="noopener noreferrer"
+          >ideal-project</a
+        >
+        introduced RxJS, dependency injection, stores, themes, lazy modules and an email-form
+        library.
+      </p>
+      <p class="note">
+        Here those ideas become standalone components, signal stores, lazy routes, a deferred view
+        and a separately packaged library. RxJS still handles asynchronous work.
+      </p>
+      <div class="tags">
+        <span class="tag">Strict TypeScript</span><span class="tag">OnPush</span
+        ><span class="tag">Zoneless</span><span class="tag">CSS tokens</span>
+      </div>
+    </div>
+    <div>
+      <h3>Verified behavior.</h3>
+      <p class="note">
+        Vitest covers store persistence, HTTP behavior, component events, scoped DI and form
+        validation. Playwright checks complete user journeys, mobile layout and accessibility.
+      </p>
+      <p class="note">
+        GitHub Actions builds the library before the app, runs tests and publishes the static demo.
+        Hash-based routing makes deep links work on GitHub Pages.
+      </p>
+      <a
+        class="external-link"
+        href="https://github.com/viktorgit/Key-features-Angular-2026/actions"
+        target="_blank"
+        rel="noopener noreferrer"
+        >View the workflow runs ↗</a
+      >
+    </div>
+  </div>
+</section>

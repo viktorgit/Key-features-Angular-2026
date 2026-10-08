@@ -1,0 +1,106 @@
+<div class="page-heading">
+  <span class="eyebrow">03 / FORMS & LIBRARY</span>
+  <h1>Good forms. Clear boundaries.</h1>
+  <p>
+    Two approaches, one principle: keep the model typed and the feedback useful. Try the reusable
+    Signal Forms component and a typed Reactive Form.
+  </p>
+</div>
+<div class="two-column">
+  <section class="panel">
+    <div class="panel-top">
+      <h2>Let's build something.</h2>
+      <span class="tag">SIGNAL FORMS</span>
+    </div>
+    <p>
+      A contact form imported from <code>feature-ui</code>. Fill it out to preview the typed output.
+    </p>
+    <lab-contact-form (submitted)="preview.set($event)" />
+    <p class="note">Demo only. Nothing is sent or stored. Use sample details.</p>
+  </section>
+  <section class="stack">
+    <div class="panel">
+      <div class="panel-top">
+        <h2>The host receives data.</h2>
+        <span class="tag">output()</span>
+      </div>
+      @if (preview(); as request) {
+        <div class="feedback" role="status">Request preview ready for {{ request.name }}.</div>
+        <pre aria-label="Request preview">{{ request | json }}</pre>
+        <button class="button small" (click)="preview.set(null)">Clear preview</button>
+      } @else {
+        <p>
+          Submit the form to see its payload here. Validation stays inside the library; business
+          behavior belongs to the host.
+        </p>
+        <div class="tags">
+          <span class="tag">Typed contract</span><span class="tag">No app dependencies</span
+          ><span class="tag">Theme tokens</span>
+        </div>
+      }
+    </div>
+    <div class="code-panel">
+      <div class="code-label"><span>feature-ui / contact-form.ts</span><span>Public API</span></div>
+      <pre>{{ snippet }}</pre>
+    </div>
+  </section>
+</div>
+<section class="panel section-gap">
+  <div class="panel-top">
+    <h2>Typed Reactive Forms</h2>
+    <span class="tag">ANOTHER TOOL IN THE BOX</span>
+  </div>
+  <p>
+    A familiar choice for existing form-heavy applications. Non-nullable controls preserve the shape
+    of the model.
+  </p>
+  <div class="two-column">
+    <form [formGroup]="preferences" (ngSubmit)="savePreferences()">
+      <div class="field">
+        <label for="display-name">Display name</label
+        ><input
+          id="display-name"
+          formControlName="displayName"
+          autocomplete="off"
+          aria-describedby="display-name-errors"
+        />
+        <div id="display-name-errors" class="error-text" aria-live="polite">
+          @if (
+            preferences.controls.displayName.touched && preferences.controls.displayName.invalid
+          ) {
+            Use at least 2 characters.
+          }
+        </div>
+      </div>
+      <div class="field">
+        <label for="experience">Angular experience</label
+        ><select id="experience" formControlName="experience">
+          <option>Exploring</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+        </select>
+      </div>
+      <div class="field">
+        <label
+          ><input type="checkbox" formControlName="updates" /> Include release notes in my
+          preview</label
+        >
+      </div>
+      <button type="submit" class="button primary">Preview preferences</button>
+    </form>
+    <div>
+      <span class="eyebrow">FORM OUTPUT</span>
+      @if (savedPreferences(); as value) {
+        <pre aria-label="Preferences preview">{{ value | json }}</pre>
+        <p class="feedback" role="status">
+          Preferences preview updated. No subscription is created.
+        </p>
+      } @else {
+        <p class="note">Your validated preferences will appear here.</p>
+      }
+      <p class="note">
+        Both forms are local demonstrations. Refreshing the page clears their values.
+      </p>
+    </div>
+  </div>
+</section>

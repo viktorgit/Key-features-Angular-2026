@@ -1,0 +1,58 @@
+<form (submit)="onSubmit($event)" novalidate>
+  <div class="field">
+    <label [for]="idPrefix() + '-name'">Your name</label
+    ><input
+      [id]="idPrefix() + '-name'"
+      autocomplete="name"
+      placeholder="Alex Morgan"
+      [formField]="fields.name"
+      [attr.aria-describedby]="idPrefix() + '-name-errors'"
+    />
+    <div [id]="idPrefix() + '-name-errors'" class="errors" aria-live="polite">
+      @if (fields.name().touched()) {
+        @for (error of fields.name().errors(); track error.kind) {
+          <span>{{ error.message }}</span>
+        }
+      }
+    </div>
+  </div>
+  <div class="field">
+    <label [for]="idPrefix() + '-email'">Email address</label
+    ><input
+      [id]="idPrefix() + '-email'"
+      type="email"
+      autocomplete="email"
+      placeholder="alex@example.com"
+      [formField]="fields.email"
+      [attr.aria-describedby]="idPrefix() + '-email-errors'"
+    />
+    <div [id]="idPrefix() + '-email-errors'" class="errors" aria-live="polite">
+      @if (fields.email().touched()) {
+        @for (error of fields.email().errors(); track error.kind) {
+          <span>{{ error.message }}</span>
+        }
+      }
+    </div>
+  </div>
+  <div class="field">
+    <label [for]="idPrefix() + '-message'">A little about your project</label
+    ><textarea
+      [id]="idPrefix() + '-message'"
+      rows="4"
+      placeholder="I would like to build…"
+      [formField]="fields.message"
+      [attr.aria-describedby]="idPrefix() + '-message-errors'"
+    ></textarea>
+    <div [id]="idPrefix() + '-message-errors'" class="errors" aria-live="polite">
+      @if (fields.message().touched()) {
+        @for (error of fields.message().errors(); track error.kind) {
+          <span>{{ error.message }}</span>
+        }
+      }
+    </div>
+  </div>
+  <div class="actions">
+    <button type="submit" class="primary">{{ submitLabel() }} <span>→</span></button
+    ><button type="button" (click)="reset()">Reset form</button>
+  </div>
+</form>

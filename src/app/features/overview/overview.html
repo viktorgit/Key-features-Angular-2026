@@ -1,0 +1,101 @@
+<div class="page-heading overview-heading">
+  <div>
+    <span class="eyebrow">THE MODERN ANGULAR PLAYBOOK</span>
+    <h1>Good patterns. Working examples.</h1>
+    <p>
+      An interactive look at how I build with Angular — from reactive state to reusable
+      architecture.
+    </p>
+  </div>
+  <span class="edition">2026 EDITION</span>
+</div>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <span class="hero-label"><span class="status-dot"></span> ANGULAR, REIMAGINED</span>
+    <h2 id="hero-title">Less boilerplate.<br />More possibility.</h2>
+    <p>
+      A hands-on workspace for the ideas behind<br />
+      maintainable, modern Angular applications.
+    </p>
+    <div class="inline-actions">
+      <a class="button hero-button" routerLink="/data">Open the playground <span>↗</span></a
+      ><a
+        class="hero-link"
+        href="https://github.com/viktorgit/ideal-project"
+        target="_blank"
+        rel="noopener noreferrer"
+        >The original project ↗</a
+      >
+    </div>
+    <div class="hero-bottom">
+      <span>Standalone</span><span>Zoneless</span><span>Signal-driven</span>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="orbit orbit-one"></div>
+    <div class="orbit orbit-two"></div>
+    <div class="art-grid"></div>
+    <div class="floating-chip chip-one"><span class="tiny-dot"></span> signal(22)</div>
+    <div class="angular-crystal"><span>A</span></div>
+    <div class="floating-chip chip-two">computed(() =&gt; next)</div>
+    <span class="art-cross cross-one">+</span><span class="art-cross cross-two">+</span
+    ><span class="art-caption">BUILT FOR WHAT'S NEXT</span>
+  </div>
+</section>
+<div class="stats">
+  <div>
+    <span class="stat-label">THE FOUNDATION</span>
+    <div>
+      <strong>{{ version }}</strong
+      ><span>Angular</span>
+    </div>
+  </div>
+  <div>
+    <span class="stat-label">THE APPROACH</span>
+    <div><strong>100%</strong><span>Standalone</span></div>
+  </div>
+  <div>
+    <span class="stat-label">THE CHANGE DETECTION</span>
+    <div><strong>0</strong><span>Zone.js dependencies</span></div>
+  </div>
+  <div>
+    <span class="stat-label">THE EXPERIENCE</span>
+    <div><strong>04</strong><span>Interactive pages</span></div>
+  </div>
+</div>
+<section aria-labelledby="features-title">
+  <div class="heading-row">
+    <div>
+      <h2 id="features-title">Explore the building blocks</h2>
+      <p class="section-description">
+        Each concept has a place in the code. Each example has something to try.
+      </p>
+    </div>
+    <span class="feature-count">06 CORE CONCEPTS</span>
+  </div>
+  <div class="feature-grid">
+    @for (feature of features; track feature.index) {
+      <a class="feature-card" [routerLink]="feature.path"
+        ><div class="card-top">
+          <span [class]="'feature-icon ' + feature.tone"><app-icon [name]="feature.icon" /></span
+          ><span class="card-number">{{ feature.index }} <span>↗</span></span>
+        </div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+        <div class="tags">
+          @for (tag of feature.tags; track tag) {
+            <span class="tag">{{ tag }}</span>
+          }
+        </div></a
+      >
+    }
+  </div>
+</section>
+<section class="evolution">
+  <div class="evolution-icon"><app-icon name="code" /></div>
+  <div>
+    <h3>A new chapter of ideal-project.</h3>
+    <p>The same engineering principles. A modern Angular 22 implementation.</p>
+  </div>
+  <a routerLink="/architecture">See the architecture <span>→</span></a>
+</section>

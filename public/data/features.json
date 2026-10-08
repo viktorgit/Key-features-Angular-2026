@@ -1,0 +1,66 @@
+[
+  {
+    "id": "signals",
+    "name": "Signal state",
+    "description": "Small, explicit stores with derived state.",
+    "category": "Reactivity",
+    "api": "signal · computed",
+    "route": "/data"
+  },
+  {
+    "id": "rxjs",
+    "name": "Cancellable search",
+    "description": "Debounce input and cancel stale requests.",
+    "category": "Reactivity",
+    "api": "switchMap · toSignal",
+    "route": "/data"
+  },
+  {
+    "id": "http",
+    "name": "HTTP pipeline",
+    "description": "Track request lifecycle with a functional interceptor.",
+    "category": "Architecture",
+    "api": "HttpInterceptorFn",
+    "route": "/data"
+  },
+  {
+    "id": "forms",
+    "name": "Signal Forms",
+    "description": "Model-driven fields and schema validation.",
+    "category": "Experience",
+    "api": "form · FormField",
+    "route": "/forms"
+  },
+  {
+    "id": "library",
+    "name": "Reusable library",
+    "description": "A contact form with a typed public contract.",
+    "category": "Architecture",
+    "api": "input · output",
+    "route": "/forms"
+  },
+  {
+    "id": "di",
+    "name": "Scoped providers",
+    "description": "Independent service instances per component.",
+    "category": "Architecture",
+    "api": "inject · providers",
+    "route": "/architecture"
+  },
+  {
+    "id": "defer",
+    "name": "Deferred views",
+    "description": "Load the insights component on interaction.",
+    "category": "Experience",
+    "api": "@defer · @placeholder",
+    "route": "/architecture"
+  },
+  {
+    "id": "theme",
+    "name": "Persistent theming",
+    "description": "Shared CSS tokens, backed by a signal.",
+    "category": "Experience",
+    "api": "effect · InjectionToken",
+    "route": "/architecture"
+  }
+]

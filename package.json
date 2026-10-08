@@ -1,0 +1,48 @@
+{
+  "name": "key-features-angular-2026",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "prestart": "npm run build:lib",
+    "start": "ng serve key-features-angular-2026",
+    "build:lib": "ng build feature-ui",
+    "build": "npm run build:lib && ng build key-features-angular-2026",
+    "build:pages": "npm run build:lib && ng build key-features-angular-2026 --base-href /Key-features-Angular-2026/",
+    "test": "npm run build:lib && ng test key-features-angular-2026 --no-watch && ng test feature-ui --no-watch",
+    "test:watch": "ng test key-features-angular-2026",
+    "test:e2e": "playwright test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm test && npm run build:pages && npm run test:e2e"
+  },
+  "private": true,
+  "packageManager": "npm@11.17.0",
+  "dependencies": {
+    "@angular/common": "22.2.2",
+    "@angular/compiler": "22.2.2",
+    "@angular/core": "22.2.2",
+    "@angular/forms": "22.2.2",
+    "@angular/platform-browser": "22.2.2",
+    "@angular/router": "22.2.2",
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "22.2.2",
+    "@angular/cli": "22.2.2",
+    "@angular/compiler-cli": "22.2.2",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.0",
+    "jsdom": "^30.0.0",
+    "ng-packagr": "^22.2.0",
+    "prettier": "^3.8.1",
+    "typescript": "~6.0.2",
+    "vitest": "^5.0.0"
+  },
+  "description": "An interactive Angular 22 portfolio: signals, RxJS, DI, forms, reusable libraries and lazy loading.",
+  "engines": {
+    "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
+  }
+}

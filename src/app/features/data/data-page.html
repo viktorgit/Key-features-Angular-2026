@@ -1,0 +1,123 @@
+<div class="page-heading">
+  <span class="eyebrow">02 / DATA & STATE</span>
+  <h1>One flow. Always in sync.</h1>
+  <p>
+    Search the feature catalog, save your favorites and watch the state react. Everything runs
+    against a local JSON fixture.
+  </p>
+</div>
+<div class="data-metrics">
+  <div class="panel">
+    <span class="eyebrow">VISIBLE FEATURES</span>
+    <div class="metric-value">{{ visible().length }}</div>
+    <span class="note">Derived with computed()</span>
+  </div>
+  <div class="panel">
+    <span class="eyebrow">YOUR COLLECTION</span>
+    <div class="metric-value">{{ favorites.count() }}</div>
+    <span class="note">Favorites persist in this browser</span>
+  </div>
+  <div class="panel">
+    <span class="eyebrow">HTTP REQUESTS FINISHED</span>
+    <div class="metric-value">{{ activity.completed() }}</div>
+    <span class="note">{{ activity.pending() }} active · functional interceptor</span>
+  </div>
+</div>
+<section class="panel catalog">
+  <div class="panel-top">
+    <h2>Feature explorer</h2>
+    <span class="tag">LIVE PLAYGROUND</span>
+  </div>
+  <div class="toolbar">
+    <div class="search">
+      <app-icon name="search" /><input
+        aria-label="Search features"
+        placeholder="Search features or APIs…"
+        [value]="search()"
+        #searchInput
+        (input)="search.set(searchInput.value)"
+      />
+    </div>
+    <select
+      aria-label="Filter by category"
+      [value]="category()"
+      #categoryInput
+      (change)="category.set(categoryInput.value)"
+    >
+      <option>All</option>
+      <option>Reactivity</option>
+      <option>Architecture</option>
+      <option>Experience</option></select
+    ><button
+      class="button"
+      [class.selected]="savedOnly()"
+      [attr.aria-pressed]="savedOnly()"
+      (click)="toggleSavedOnly()"
+    >
+      Saved only
+    </button>
+  </div>
+  <div [attr.aria-busy]="result().status === 'loading'">
+    @switch (result().status) {
+      @case ('loading') {
+        <div class="state-message" role="status">
+          <span class="loader"></span> Loading features…
+        </div>
+      }
+      @case ('error') {
+        <div class="state-message" role="alert">
+          <p>{{ result().message }}</p>
+          <button class="button primary" (click)="reload()">Retry request</button>
+        </div>
+      }
+      @case ('ready') {
+        <app-feature-table
+          [rows]="visible()"
+          [favorites]="favorites.ids()"
+          (toggleFavorite)="favorites.toggle($event)"
+        />
+      }
+    }
+  </div>
+  <div class="table-footer">
+    <span>{{ visible().length }} results · {{ favorites.count() }} saved</span>
+    <div class="inline-actions">
+      <button
+        class="button small subtle"
+        (click)="favorites.clear()"
+        [disabled]="favorites.count() === 0"
+      >
+        Clear saved</button
+      ><button class="button small subtle" (click)="simulateError()">Simulate error</button
+      ><button class="button small" (click)="reload()">Reload data ↻</button>
+    </div>
+  </div>
+</section>
+<div class="two-column section-gap">
+  <div class="panel">
+    <span class="eyebrow">FOLLOW THE DATA</span>
+    <h2 class="flow-title">From intent to interface.</h2>
+    <ol class="flow-list">
+      <li>
+        <strong>Signals hold the intent.</strong
+        ><span>Search and category produce a typed query.</span>
+      </li>
+      <li>
+        <strong>RxJS handles time.</strong
+        ><span>A 250 ms debounce, request cancellation and local error recovery.</span>
+      </li>
+      <li>
+        <strong>A signal delivers the result.</strong
+        ><span>The template reads one loading / ready / error state.</span>
+      </li>
+      <li>
+        <strong>The view stays presentational.</strong
+        ><span>Required inputs receive data. An output reports favorite changes.</span>
+      </li>
+    </ol>
+  </div>
+  <div class="code-panel">
+    <div class="code-label"><span>data-page.ts</span><span>RxJS → Signals</span></div>
+    <pre>{{ snippet }}</pre>
+  </div>
+</div>
